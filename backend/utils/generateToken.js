@@ -1,0 +1,14 @@
+const jwt = require("jsonwebtoken");
+
+/**
+ * Generate JWT Token
+ * @param {string} id - MongoDB User ID
+ * @returns {string} JWT token
+ */
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d", // Token valid for 30 days
+  });
+};
+
+module.exports = generateToken;
